@@ -1,11 +1,11 @@
 %»¬Ä£¿ØÖÆËã·¨
 function Result=SMC(tt)
 
-persistent error_sum;
-persistent deta_d_pre;
-persistent eta_d_pre;
-persistent deta_r_pre;
-persistent deta_pre;
+global error_sum;
+global deta_d_pre;
+global eta_d_pre;
+global deta_r_pre;
+global deta_pre;
 
 
 if isempty(deta_d_pre)
@@ -96,11 +96,11 @@ ddalpha_r = J\ddeta_r;
 s=cc.*derror+error;
 k = 0.05*ones(6,1);
 %e = 10*ones(6,1);
-e = 1.8*abs(M*ddalpha_r+C*dalpha_r+g);
+e = 3*abs(M*ddalpha_r+C*dalpha_r+g);
 %tau = M*ddalpha_r+C*dalpha_r+g-e.*sign(J\s)-k.*(J\s);
 %tau =M*ddalpha_r+C*dalpha_r-g-e.*sign(J\s)-k.*(J\s);
 %tau = M*(actualSpeed-deta_pre)/0.1+C*actualSpeed-g-e.*sign(J\s)-k.*(J\s);
-tau = M*(actualSpeed-deta_pre)/0.1+C*actualSpeed-g-J*(e.*sign(J\s)-k.*(J\s));
+tau = M*(J\(actualSpeed-deta_pre))/0.1+C*(J\actualSpeed)-g-J*(e.*sign(J\s)-k.*(J\s));
 deta_d_pre = deta_d;
 eta_d_pre = eta_d;
 deta_r_pre = deta_r;
