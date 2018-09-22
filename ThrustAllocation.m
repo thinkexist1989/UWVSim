@@ -14,7 +14,7 @@ J = [cos(psi)*cos(theta),-sin(psi)*cos(phi)+cos(psi)*sin(theta)*sin(phi),sin(psi
       -sin(theta)       ,                cos(theta)*sin(phi)           ,                      cos(theta)*cos(phi)      ,0,0,0;
                   0     ,                               0              ,                               0               ,1,sin(phi)*tan(theta),cos(phi)*tan(theta);
                   0     ,                               0              ,                               0               ,0,   cos(phi)        ,-sin(phi);
-                  0     ,                               0              ,                               0               ,0,sin(phi)/cos(theta),cos(phi)/cos(theta)]
+                  0     ,                               0              ,                               0               ,0,sin(phi)/cos(theta),cos(phi)/cos(theta)];
               
 K_star =[-0.03     ,  -0.0882353 , 0.25  ,  -1.47059,    0.5  ,        0;
          0.288675  ,      -0.5   ,    0  ,     0    ,      0  , 0.629367;

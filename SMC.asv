@@ -94,13 +94,13 @@ ddalpha_r = J\ddeta_r;
 
 %滑模面定义
 s=cc.*derror+error;
-k = 0.05*ones(6,1);
+k = 0.5*ones(6,1);
 %e = 10*ones(6,1);
-e = 1.8*abs(M*ddalpha_r+C*dalpha_r+g);
+e = 1*abs(M*ddalpha_r+C*dalpha_r+g);
 %tau = M*ddalpha_r+C*dalpha_r+g-e.*sign(J\s)-k.*(J\s);
 %tau =M*ddalpha_r+C*dalpha_r-g-e.*sign(J\s)-k.*(J\s);
 %tau = M*(actualSpeed-deta_pre)/0.1+C*actualSpeed-g-e.*sign(J\s)-k.*(J\s);
-tau = M*(actualSpeed-deta_pre)/0.1+C*actualSpeed-g-J*(e.*sign(J\s)-k.*(J\s));
+tau = M*(actualSpeed-deta_pre)/0.1+C*actualSpeed-g-e.*sign(s)-k.*(s);
 deta_d_pre = deta_d;
 eta_d_pre = eta_d;
 deta_r_pre = deta_r;
