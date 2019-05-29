@@ -55,8 +55,8 @@ eta_d = setPosition;
 setSpeed = tt(38:43); %设定速度 8
 setSpeed = reshape(setSpeed,6,1);
 
-error = actualPosition-setPosition;
-derror = actualSpeed-setSpeed;
+error = setPosition - actualPosition;
+derror = setSpeed - actualSpeed;
 
 J1 = [cos(psi)*cos(theta)  -sin(psi)*cos(phi)+cos(psi)*sin(theta)*sin(phi)  sin(psi)*sin(phi)+cos(psi)*cos(phi)*sin(theta);
     sin(psi)*cos(theta)  cos(psi)*cos(phi)+sin(phi)*sin(theta)*sin(psi)   -cos(psi)*sin(phi)+sin(theta)*sin(psi)*cos(phi);
@@ -86,9 +86,9 @@ C = [       0                  0                  0                 m*(yG*q+zG*r
 
 %%
 %PID
-P = -20*ones(6,1);
-D = -4*ones(6,1);
-I = -.3*ones(6,1);
+P = [1;1;7;15;.06;.3];%P = [1;1;1;15;.06;.3];%P = [1;1;1;15;.06;.3]; 20
+D = [0;0;0;12;0;1];    %D = [0;0;0;8;0;1];%D = [0;0;0;3;0;1]; 30
+I = [0;0;0;0;0;0];    %I = [0;0;0;0;0;0];%I = [0;0;0;0.02;0;0];
 tau = P.*(error)+I.*error_sum+D.*(derror);
 %%
 %Model-based PID
